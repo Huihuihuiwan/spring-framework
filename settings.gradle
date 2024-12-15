@@ -1,7 +1,8 @@
 plugins {
 	id "com.gradle.develocity" version "3.17.2"
 	id "io.spring.ge.conventions" version "0.0.17"
-	id "org.gradle.toolchains.foojay-resolver-convention" version "0.7.0"
+//	id "org.gradle.toolchains.foojay-resolver-convention" version "0.7.0"
+	id 'org.gradle.toolchains.foojay-resolver-convention' version '0.4.0'
 }
 
 include "spring-aop"
@@ -32,8 +33,11 @@ include "framework-bom"
 include "framework-docs"
 include "framework-platform"
 include "integration-tests"
+// 新增一个新模块，加入在父.gradle中。
+include 'wan-spring-webmvc-demo'
 
 rootProject.name = "spring"
+// 加入子模块。对应子模块的gradle名称需要和这里的一致
 rootProject.children.each {project ->
 	project.buildFileName = "${project.name}.gradle"
 }

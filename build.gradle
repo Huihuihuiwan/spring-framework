@@ -23,14 +23,23 @@ configure(allprojects) { project ->
 	apply plugin: "org.springframework.build.localdev"
 	group = "org.springframework"
 	repositories {
-		mavenCentral()
-		maven {
-			url "https://repo.spring.io/milestone"
-			content {
-				// Netty 5 optional support
-				includeGroup 'io.projectreactor.netty'
-			}
+		// 使用阿里云
+	    maven {
+			url 'https://maven.aliyun.com/repository/public/'
 		}
+		maven {
+			url 'https://maven.aliyun.com/repository/spring/'
+		}
+		mavenLocal()
+		mavenCentral()
+//		# mavenCentral()
+//		# maven {
+//		# 	url "https://repo.spring.io/milestone"
+//		# 	content {
+//		# 		// Netty 5 optional support
+//		# 		includeGroup 'io.projectreactor.netty'
+//		# 	}
+//		# }
 		if (version.contains('-')) {
 			maven { url "https://repo.spring.io/milestone" }
 		}
